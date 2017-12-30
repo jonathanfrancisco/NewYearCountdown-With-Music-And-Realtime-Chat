@@ -22,3 +22,24 @@ const countDown = () => {
 
 const interval = setInterval(countDown, 1000);
 
+
+const socket = io();
+const form = document.querySelector('#chat-pane form');
+
+form.addEventListener('submit', (event) => {
+    
+    event.preventDefault();
+
+    let inputElement = document.querySelector('#chat-pane form input');
+    let message = inputElement.value;
+    socket.emit('chatMessage',message);
+    inputElement.value = '';
+
+});
+
+socket.on('chatMessage', (message) => {
+    const messages = document.querySelector('#messages');
+    const li = document.createElement('li');
+          li.innerHTML = message;
+    messages.appendChild(li);
+});

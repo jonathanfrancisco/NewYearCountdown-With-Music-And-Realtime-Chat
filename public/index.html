@@ -28,15 +28,18 @@
         </div>
 
         <div id="chat-pane">
-            <p>Messages here</p>
-            <p>Messages here</p>
-            <p>Messages here</p>
-            <p>Messages here</p>
+            <ul id="messages">
+            </ul>
+            <form action="">
+                <input id="m" autocomplete="off" />
+                <button>Send</button>
+            </form>
         </div>
 
     </div>
 
-
+    <script src="socket.io/socket.io.js"></script>
     <script src="app.js"></script>
+
     </body>
 </html>
