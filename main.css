@@ -30,12 +30,30 @@ body {
 #header h1 {
     font-family: 'Bungee';
     font-size: 5em;
+    margin: 0;
 }
 #count-down h1 {
     font-family: 'Roboto Mono';
     font-size: 3em;
 }
 
+#music-control {
+    display: flex;
+    flex-direction: row;
+}
+#music-control div {
+    border-radius: 15px;
+    margin: 5px;
+    padding: 8px;
+}
+
+#music-control div:nth-child(1) {
+    background-color: #4CAF50;
+}
+
+#music-control div:nth-child(2) {
+    background-color: #F44336; 
+}
 #chat-pane {
     color: #000;
     width: 30%;
