@@ -63,7 +63,10 @@ socket.on('chatMessage', (message) => {
     const li = document.createElement('li');
           li.innerHTML = `${message}`;
     messages.appendChild(li);
+
     messages.scrollTop = messages.scrollHeight;
+
+    
 });
 
 
