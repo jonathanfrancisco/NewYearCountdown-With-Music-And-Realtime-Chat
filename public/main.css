@@ -37,7 +37,7 @@ body {
     font-size: 3em;
 }
 
-#music-control {
+/* #music-control {
     display: flex;
     flex-direction: row;
 }
@@ -53,6 +53,12 @@ body {
 
 #music-control div:nth-child(2) {
     background-color: #F44336; 
+} */
+
+#quotes {
+    
+    text-align: center;
+    max-width: 700px;
 }
 #chat-pane {
     color: #fff;
