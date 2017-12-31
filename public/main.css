@@ -115,6 +115,8 @@ form {
     padding: 3px;
     display: flex;
     flex-direction: row;
+    height: 80px;
+    min-height: 80px;
 }
 form input { 
     border: none;
