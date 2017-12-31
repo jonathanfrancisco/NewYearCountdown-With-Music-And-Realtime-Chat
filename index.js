@@ -1,4 +1,6 @@
 
+var cool = require('cool-ascii-faces');
+
 const path = require('path');
 
 const express = require('express');
@@ -9,7 +11,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
-server.listen(3000);
+server.listen(process.env.PORT);
 
 
 app.get('/', (req, res)=> {
