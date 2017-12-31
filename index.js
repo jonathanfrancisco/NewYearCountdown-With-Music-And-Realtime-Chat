@@ -19,6 +19,7 @@ app.get('/', (req, res)=> {
 
 
 let people = {};
+let peopleCount = 0;
 
 
 io.on('connection', (socket)=> {
@@ -28,14 +29,15 @@ io.on('connection', (socket)=> {
     
       socket.broadcast.emit('join', name);
       people[socket.id] = name;
+      peopleCount++;
+      io.emit('update',`There are <span style="color: green;">${peopleCount}</span> people online.`);
+
 
     });
     
     // SENDING OF MESSAGE
     socket.on('chatMessage', (message) => {
-
        socket.broadcast.emit('chatMessage',`<strong>${people[socket.id]}: </strong> ${message}`); 
-    
     })
 
 
@@ -45,6 +47,8 @@ io.on('connection', (socket)=> {
         console.log(`${people[socket.id]} has disconnected.`);  
         io.emit('disconnect', people[socket.id]);
         delete people[socket.id];
+        peopleCount--;
+        io.emit('update',`There are <span style="color: green;">${peopleCount}</span> people online.`);
 
     });
 

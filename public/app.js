@@ -100,6 +100,10 @@ socket.on('disconnect', (name) => {
     messages.appendChild(li);
 });
 
+socket.on('update', (status) => {
+    document.querySelector('h5').innerHTML = status;
+});
+
 
 
 
