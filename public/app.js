@@ -68,7 +68,7 @@ socket.on('chatMessage', (message) => {
     const li = document.createElement('li');
           li.innerHTML = '<span>You may refresh the page if you want to change your name</span>';
     messages.appendChild(li);
-          li.innerHTML = '<span>You have joined the new year countdown chatroom by jonathan da awesome ! ^_^</span>'
+          li.innerHTML = `<span>You have joined as "${name}" in this New Year Countdown Chatroom by jonathan da awesome ! ^_^</span>`;
     messages.appendChild(li);
 
 })();
