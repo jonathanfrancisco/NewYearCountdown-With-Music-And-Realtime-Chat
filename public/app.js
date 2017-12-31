@@ -13,6 +13,17 @@ const countDown = () => {
     
     let countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
+
+
+    if(countdownText === '0d 0h 1m 8s') {
+        const auldLangSyne = document.querySelector('audio');
+        auldLangSyne.play();
+    }
+    
+
+
+
+
     document.querySelector('#count-down h1').innerHTML = countdownText;
 
 }
