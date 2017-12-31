@@ -8,38 +8,41 @@
     </head>
     <body>
 
-    <div class="container">
+        <div id="particles-js"> </div>
 
-        <div id="count-down-pane">
+        <div class="container">
 
-            <div id="header">
-                <h1>New Year Countdown</h1>
+            <div id="count-down-pane">
+
+                <div id="header">
+                    <h1>New Year Countdown</h1>
+                </div>
+
+                <div id="count-down">
+                    <h1></h1>
+                </div>
+
+                <div id="music-control">
+                    <div><h3>Press 'Enter' to start music</h3></div>
+                    <div><h3>Press 'Space' to stop music</h3></div>
+                    
+                </div>
             </div>
 
-            <div id="count-down">
-                <h1></h1>
+            <div id="chat-pane">
+                <ul id="messages">
+                </ul>
+                <form action="">
+                    <input id="m" autocomplete="off" />
+                    <button>Send</button>
+                </form>
             </div>
 
-            <div id="music-control">
-                 <div><h3>Press 'Enter' to start music</h3></div>
-                <div><h3>Press 'Space' to stop music</h3></div>
-                
-            </div>
         </div>
 
-        <div id="chat-pane">
-            <ul id="messages">
-            </ul>
-            <form action="">
-                <input id="m" autocomplete="off" />
-                <button>Send</button>
-            </form>
-        </div>
-
-    </div>
-
-    <script src="socket.io/socket.io.js"></script>
-    <script src="app.js"></script>
+        <script src="particles.js"></script>
+        <script src="socket.io/socket.io.js"></script>
+        <script src="app.js"></script>
 
     </body>
 </html>

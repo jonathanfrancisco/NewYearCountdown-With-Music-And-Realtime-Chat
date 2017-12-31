@@ -16,17 +16,24 @@ app.get('/', (req, res)=> {
     res.render('index');
 });
 
+let usersConnected = 0;
 
 io.on('connection', (socket)=> {
     
     console.log('a user has connected');
 
+    usersConnected++;
+
+    console.log('There are '+usersConnected+' users');
+
     socket.on('chatMessage', (message) => {
-       io.emit('chatMessage',message);
+       io.emit('chatMessage',message); 
     })
 
     socket.on('disconnect', () => {
         console.log('a user diconnected');
+        usersConnected--;
+        console.log('There are '+usersConnected+' users');
     })
 
 });
