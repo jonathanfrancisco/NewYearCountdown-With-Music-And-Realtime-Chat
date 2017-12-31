@@ -75,6 +75,9 @@ body {
     box-shadow: -1px 0px 15px -5px #fff;
 }
 
+strong {
+    color: #304FFE;
+}
 
 
 /*****************/

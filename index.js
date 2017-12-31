@@ -16,24 +16,43 @@ app.get('/', (req, res)=> {
     res.render('index');
 });
 
-let usersConnected = 0;
+
+
+let people = {};
+
 
 io.on('connection', (socket)=> {
+
+    // JOINING THE AWESOME CHAT
+    socket.on('join', (name) => {
+        console.log(socket.id);
+      io.emit('join', name);
+
+        people[socket.id] = name;
+
+      console.log(people);
+
+    });
     
-    console.log('a user has connected');
-
-    usersConnected++;
-
-    console.log('There are '+usersConnected+' users');
-
+    // SENDING OF MESSAGE
     socket.on('chatMessage', (message) => {
-       io.emit('chatMessage',message); 
+
+       io.emit('chatMessage',`<strong>${people[socket.id]}: </strong> ${message}`); 
+    
     })
 
-    socket.on('disconnect', () => {
-        console.log('a user diconnected');
-        usersConnected--;
-        console.log('There are '+usersConnected+' users');
-    })
+
+    // DISCONNECTING FROM AWESOME CHAT :(
+    socket.on('disconnect', (name) => {
+        
+        console.log(`${people[socket.id]} has disconnected.`);  
+        io.emit('disconnect', people[socket.id]);
+        delete people[socket.id];
+
+    });
 
 });
+
+
+
+

@@ -1,7 +1,4 @@
 
-
-
-
 const countDownDate = new Date('January 1, 2018 00:00:00').getTime();
 
 const countDown = () => {
@@ -23,6 +20,11 @@ const countDown = () => {
 const interval = setInterval(countDown, 1000);
 
 
+
+/*********************
+        SOCKET.IO 
+ ******************* */
+
 const socket = io();
 const form = document.querySelector('#chat-pane form');
 
@@ -40,17 +42,38 @@ form.addEventListener('submit', (event) => {
 socket.on('chatMessage', (message) => {
     const messages = document.querySelector('#messages');
     const li = document.createElement('li');
-          li.innerHTML = message;
+          li.innerHTML = `${message}`;
     messages.appendChild(li);
 });
 
 
+(function() {
 
-/* -----------------------------------------------
-/* How to use? : Check the GitHub README
-/* ----------------------------------------------- */
+    let name = prompt("Enter your desired name: ");
 
-/* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
+    if(name === '')
+        name = 'Anonymous';
+   
+    socket.emit('join', name);
+
+})();
+
+
+socket.on('join', (name) => {
+    const messages = document.querySelector('#messages');
+    const li = document.createElement('li');
+          li.innerHTML = `${name} has joined the new year countdown chatroom.`;
+    messages.appendChild(li);
+});
+
+
+socket.on('disconnect', (name) => {
+    const messages = document.querySelector('#messages');
+    const li = document.createElement('li');
+          li.innerHTML = `${name} has disconnected.`;
+    messages.appendChild(li);
+});
+
 
 particlesJS.load('particles-js', 'particlesjs-config.json', function() {
   console.log('particles.js loaded - callback');
