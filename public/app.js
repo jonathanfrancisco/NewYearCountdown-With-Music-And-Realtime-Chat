@@ -66,7 +66,7 @@ socket.on('chatMessage', (message) => {
 
     let shouldScroll;
 
-    shouldSCroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
+    shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
 
     messages.appendChild(li);
 
