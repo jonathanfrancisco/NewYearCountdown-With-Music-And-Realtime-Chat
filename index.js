@@ -21,7 +21,7 @@ app.get('/', (req, res)=> {
 
 
 let people = {};
-let peopleCount = 0;
+let peopleCount = -1;
 
 
 io.on('connection', (socket)=> {
