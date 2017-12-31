@@ -21,14 +21,30 @@ const countDown = () => {
     }
     
 
-
-
-
     document.querySelector('#count-down h1').innerHTML = countdownText;
+
+    if(countdownText === '0d 0h 0m 11s')
+        document.querySelector('#count-down').innerHTML = `<h1 style="font-size: 90vh;">${seconds}</h1>`;
+    
+    if(remainingTime < 0) {
+        clearInterval(interval);
+        document.querySelector('#count-down').innerHTML = `<h1 style="font-size: 30em; margin: 0;">2018<h1>`;
+
+        setInterval(()=>{
+            var r = Math.floor(Math.random()*255)+1;
+            var g = Math.floor(Math.random()*255)+1;
+            var b = Math.floor(Math.random()*255)+1;
+            document.querySelector('#count-down').style.color = `rgb(${r},${g},${b})`;
+        },200);
+
+
+    }
+
+
 
 }
 
-const interval = setInterval(countDown, 1000);
+var interval = setInterval(countDown, 1000);
 
 
 
