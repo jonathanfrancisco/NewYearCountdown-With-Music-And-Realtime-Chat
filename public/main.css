@@ -79,6 +79,14 @@ strong {
     color: #304FFE;
 }
 
+#you {
+    color: yellow;
+}
+
+span {
+    opacity: 0.3;
+}
+
 
 /*****************/
 

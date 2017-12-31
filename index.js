@@ -25,19 +25,16 @@ io.on('connection', (socket)=> {
 
     // JOINING THE AWESOME CHAT
     socket.on('join', (name) => {
-        console.log(socket.id);
-      io.emit('join', name);
-
-        people[socket.id] = name;
-
-      console.log(people);
+    
+      socket.broadcast.emit('join', name);
+      people[socket.id] = name;
 
     });
     
     // SENDING OF MESSAGE
     socket.on('chatMessage', (message) => {
 
-       io.emit('chatMessage',`<strong>${people[socket.id]}: </strong> ${message}`); 
+       socket.broadcast.emit('chatMessage',`<strong>${people[socket.id]}: </strong> ${message}`); 
     
     })
 

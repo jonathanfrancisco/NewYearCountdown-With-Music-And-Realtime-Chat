@@ -27,6 +27,7 @@ const interval = setInterval(countDown, 1000);
 
 const socket = io();
 const form = document.querySelector('#chat-pane form');
+let name = undefined;
 
 form.addEventListener('submit', (event) => {
     
@@ -35,6 +36,13 @@ form.addEventListener('submit', (event) => {
     let inputElement = document.querySelector('#chat-pane form input');
     let message = inputElement.value;
     socket.emit('chatMessage',message);
+
+    const messages = document.querySelector('#messages');
+    const li = document.createElement('li');
+          li.innerHTML = `<strong id="you">${name}: </strong>${message}`;
+    messages.appendChild(li);
+
+
     inputElement.value = '';
 
 });
@@ -49,12 +57,19 @@ socket.on('chatMessage', (message) => {
 
 (function() {
 
-    let name = prompt("Enter your desired name: ");
-
-    if(name === '')
+    name = prompt("Enter your desired name: ");
+    
+    if(name === undefined || name === null || name === '')
         name = 'Anonymous';
    
     socket.emit('join', name);
+
+    const messages = document.querySelector('#messages');
+    const li = document.createElement('li');
+          li.innerHTML = '<span>You may refresh the page if you want to change your name</span>';
+    messages.appendChild(li);
+          li.innerHTML = '<span>You have joined the new year countdown chatroom by jonathan da awesome ! ^_^</span>'
+    messages.appendChild(li);
 
 })();
 
@@ -62,7 +77,7 @@ socket.on('chatMessage', (message) => {
 socket.on('join', (name) => {
     const messages = document.querySelector('#messages');
     const li = document.createElement('li');
-          li.innerHTML = `${name} has joined the new year countdown chatroom.`;
+          li.innerHTML = `<span>${name} has joined the new year countdown chatroom.</span>`;
     messages.appendChild(li);
 });
 
@@ -73,6 +88,17 @@ socket.on('disconnect', (name) => {
           li.innerHTML = `${name} has disconnected.`;
     messages.appendChild(li);
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 particlesJS.load('particles-js', 'particlesjs-config.json', function() {
