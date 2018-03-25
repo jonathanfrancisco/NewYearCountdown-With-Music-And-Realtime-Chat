@@ -2,7 +2,7 @@
 var cool = require('cool-ascii-faces');
 
 const path = require('path');
-
+	
 const express = require('express');
 const app = express();
       app.use(express.static('public'));
@@ -12,7 +12,6 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 server.listen(process.env.PORT);
-
 
 app.get('/', (req, res)=> {
     res.render('index');

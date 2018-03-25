@@ -3,7 +3,11 @@
 /*********************
         COUNT DOWN
  * ***************** */
-const countDownDate = new Date('January 1, 2018 00:00:00').getTime();
+var year = new Date().getFullYear();
+year += 1;
+let countDownDate = new Date('January 1, '+year+' 00:00:00').getTime();
+document.querySelector('.year').innerHTML = year;
+
 
 const countDown = () => {
     
